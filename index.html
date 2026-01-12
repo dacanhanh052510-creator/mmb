@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chúc mừng sinh nhật!</title>
+    <title>snvv nghen</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -24,7 +24,7 @@
       }
 
       .content {
-        transition: opacity 0.6s ease;
+        transition: opacity 0.75s ease;
       }
 
       .hidden {
@@ -36,6 +36,7 @@
         font-size: 2.8em;
         color: #ffffff;
         animation: glow 1.75s infinite alternate;
+        transition: opacity 0.75s ease, transform 0.75s ease;
       }
 
       .row {
@@ -55,6 +56,7 @@
         width: 180px;
         border-radius: 12px;
         box-shadow: 0 0 12px rgba(255, 182, 193, 0.6);
+        transition: opacity 0.75s ease, transform 0.75s ease;
       }
 
       /* Khung hộp quà pastel */
@@ -86,18 +88,30 @@
         pointer-events: none;
       }
 
-      .fly-image {
+      /* Khung trắng bo góc */
+      .white-box {
         position: absolute;
-        bottom: 0;
+        top: 25%;
         left: 50%;
-        transform: translateX(-50%);
-        width: 120px;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        min-height: 300px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         opacity: 0;
-        transition: transform 2s ease-out, opacity 1s ease-in;
+        transition: opacity 0.75s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        font-size: 1.1em;
+        color: #333;
+        text-align: justify;
+        line-height: 1.5;
       }
 
-      .fly {
-        transform: translateX(-50%) translateY(-400px) scale(1.2);
+      .white-box.show {
         opacity: 1;
       }
 
@@ -116,8 +130,7 @@
   <body>
     <div class="container">
       <div class="content" id="content">
-        <h1>Chúc mừng sinh nhật!</h1>
-        <!-- Thay emoji bằng hình ảnh với alt="snvv nghen" -->
+        <h1>snvv nghen</h1>
         <div class="cake">
           <img src="snvv.png" alt="snvv nghen" />
         </div>
@@ -128,29 +141,30 @@
         <div class="gift-box" id="giftBox"><span>⁉️</span></div>
       </div>
 
-      <!-- Ảnh bay lên -->
-      <img
-        src="https://i.imgur.com/3ZQ3Z5L.png"
-        alt="Quà bay lên"
-        class="fly-image"
-        id="flyImage"
-      />
+      <!-- Khung trắng bo góc với lời chúc -->
+      <div class="white-box" id="whiteBox">
+        Nói thật với cái kinh tế eo hẹp cùng tư duy 6đ văn đỉnh cao của bản thân
+        t thì đây chính là "món quà" dangcap nhất🥀🥀 mà t có thể tặng cho m
+        trong cái ngày như thế này cho nên đừng có đánh giá t :))
+      </div>
     </div>
 
     <script>
       const giftBox = document.getElementById("giftBox");
       const content = document.getElementById("content");
-      const flyImage = document.getElementById("flyImage");
+      const whiteBox = document.getElementById("whiteBox");
 
       giftBox.addEventListener("click", function (event) {
         event.stopPropagation();
         content.classList.add("hidden");
-        flyImage.classList.add("fly");
+        setTimeout(() => {
+          whiteBox.classList.add("show");
+        }, 800);
       });
 
       document.body.addEventListener("click", function () {
         content.classList.remove("hidden");
-        flyImage.classList.remove("fly");
+        whiteBox.classList.remove("show");
       });
     </script>
   </body>

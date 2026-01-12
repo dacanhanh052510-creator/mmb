@@ -1,171 +1,168 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>snvv nghen</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to bottom, #fbead1, #fbc8b0);
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>snvv nghen</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #fbead1, #fbc8b0);
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      position: relative;
+    }
+
+    .content {
+      transition: opacity 0.75s ease;
+    }
+
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #ffffff;
+      animation: glow 1.75s infinite alternate;
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin: 30px 0;
+    }
+
+    /* Bánh sinh nhật hình ảnh */
+    .cake {
+      margin-top: 20px;
+    }
+
+    .cake img {
+      width: 180px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(255, 182, 193, 0.6);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    /* Khung hộp quà pastel */
+    .gift-box {
+      width: 120px;   /* giảm 20% từ 150px */
+      height: 120px;  /* giảm 20% từ 150px */
+      background: linear-gradient(135deg, #ffe6e6, #ffd9b3, #ffffff);
+      border: 4px solid #ffb6b6;
+      border-radius: 12px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px rgba(255, 182, 193, 0.6), 0 0 20px rgba(255, 200, 150, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3.2em; /* emoji nhỏ lại theo hộp */
+    }
+
+    .gift-box:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 18px rgba(255, 182, 193, 0.8), 0 0 28px rgba(255, 200, 150, 0.8);
+      filter: brightness(1.1);
+    }
+
+    .gift-box span {
+      pointer-events: none;
+      font-size: inherit; /* emoji theo kích thước hộp */
+    }
+
+    /* Khung trắng bo góc */
+    .white-box {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      min-height: 300px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.75s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-size: 1.1em;
+      color: #333;
+      text-align: justify;
+      line-height: 1.5;
+    }
+
+    .white-box.show {
+      opacity: 1;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 6px #ffffff, 0 0 12px #ffffff, 0 0 18px #ff69b4,
+          0 0 26px #ff69b4, 0 0 34px #ff69b4;
       }
-
-      .container {
-        max-width: 800px;
-        position: relative;
+      100% {
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 32px #ff1493,
+          0 0 44px #ff1493, 0 0 56px #ff1493;
       }
-
-      .content {
-        transition: opacity 0.75s ease;
-      }
-
-      .hidden {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      h1 {
-        font-size: 2.8em;
-        color: #ffffff;
-        animation: glow 1.75s infinite alternate;
-        transition: opacity 0.75s ease, transform 0.75s ease;
-      }
-
-      .row {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        margin: 30px 0;
-      }
-
-      /* Bánh sinh nhật hình ảnh */
-      .cake {
-        margin-top: 20px;
-      }
-
-      .cake img {
-        width: 180px;
-        border-radius: 12px;
-        box-shadow: 0 0 12px rgba(255, 182, 193, 0.6);
-        transition: opacity 0.75s ease, transform 0.75s ease;
-      }
-
-      /* Khung hộp quà pastel */
-      .gift-box {
-        width: 150px;
-        height: 150px;
-        background: linear-gradient(135deg, #ffe6e6, #ffd9b3, #ffffff);
-        border: 4px solid #ffb6b6;
-        border-radius: 12px;
-        position: relative;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 12px rgba(255, 182, 193, 0.6),
-          0 0 20px rgba(255, 200, 150, 0.6);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 4em;
-      }
-
-      .gift-box:hover {
-        transform: scale(1.1);
-        box-shadow: 0 0 18px rgba(255, 182, 193, 0.8),
-          0 0 28px rgba(255, 200, 150, 0.8);
-        filter: brightness(1.1);
-      }
-
-      .gift-box span {
-        pointer-events: none;
-      }
-
-      /* Khung trắng bo góc */
-      .white-box {
-        position: absolute;
-        top: 25%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 600px;
-        min-height: 300px;
-        background: #ffffff;
-        border-radius: 16px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        opacity: 0;
-        transition: opacity 0.75s ease;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        font-size: 1.1em;
-        color: #333;
-        text-align: justify;
-        line-height: 1.5;
-      }
-
-      .white-box.show {
-        opacity: 1;
-      }
-
-      @keyframes glow {
-        0% {
-          text-shadow: 0 0 6px #ffffff, 0 0 12px #ffffff, 0 0 18px #ff69b4,
-            0 0 26px #ff69b4, 0 0 34px #ff69b4;
-        }
-        100% {
-          text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 32px #ff1493,
-            0 0 44px #ff1493, 0 0 56px #ff1493;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="content" id="content">
-        <h1>snvv nghen</h1>
-        <div class="cake">
-          <img src="snvv.png" alt="snvv nghen" />
-        </div>
-      </div>
-
-      <!-- Khung hộp quà pastel với emoji bên trong -->
-      <div class="row">
-        <div class="gift-box" id="giftBox"><span>⁉️</span></div>
-      </div>
-
-      <!-- Khung trắng bo góc với lời chúc -->
-      <div class="white-box" id="whiteBox">
-        Nói thật với cái kinh tế eo hẹp cùng tư duy 6đ văn đỉnh cao của bản thân
-        t thì đây chính là "món quà" dangcap nhất🥀🥀 mà t có thể tặng cho m
-        trong cái ngày như thế này cho nên đừng có đánh giá t :))
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content" id="content">
+      <h1>snvv nghen</h1>
+      <div class="cake">
+        <img src="snvv.png" alt="snvv nghen" />
       </div>
     </div>
 
-    <script>
-      const giftBox = document.getElementById("giftBox");
-      const content = document.getElementById("content");
-      const whiteBox = document.getElementById("whiteBox");
+    <!-- Khung hộp quà pastel với emoji bên trong -->
+    <div class="row">
+      <div class="gift-box" id="giftBox"><span>⁉️</span></div>
+    </div>
 
-      giftBox.addEventListener("click", function (event) {
-        event.stopPropagation();
-        content.classList.add("hidden");
-        setTimeout(() => {
-          whiteBox.classList.add("show");
-        }, 800);
-      });
+    <!-- Khung trắng bo góc với lời chúc -->
+    <div class="white-box" id="whiteBox">
+      Nói thật với cái kinh tế eo hẹp cùng tư duy 6đ văn đỉnh cao của bản thân t thì đây chính là "món quà" dangcap nhất🥀🥀 mà t có thể tặng cho m trong cái ngày như thế này cho nên đừng có đánh giá t :))
+    </div>
+  </div>
 
-      document.body.addEventListener("click", function () {
-        content.classList.remove("hidden");
-        whiteBox.classList.remove("show");
-      });
-    </script>
-  </body>
+  <script>
+    const giftBox = document.getElementById("giftBox");
+    const content = document.getElementById("content");
+    const whiteBox = document.getElementById("whiteBox");
+
+    giftBox.addEventListener("click", function (event) {
+      event.stopPropagation();
+      content.classList.add("hidden");
+      setTimeout(() => {
+        whiteBox.classList.add("show");
+      }, 800);
+    });
+
+    document.body.addEventListener("click", function () {
+      content.classList.remove("hidden");
+      whiteBox.classList.remove("show");
+    });
+  </script>
+</body>
 </html>

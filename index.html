@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chúc mừng sinh nhật!</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #fbead1, #fbc8b0);
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 800px;
+        position: relative;
+      }
+
+      .content {
+        transition: opacity 0.6s ease;
+      }
+
+      .hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      h1 {
+        font-size: 2.8em;
+        color: #ffffff;
+        animation: glow 1.75s infinite alternate;
+      }
+
+      .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        margin: 30px 0;
+      }
+
+      /* Bánh sinh nhật hình ảnh */
+      .cake {
+        margin-top: 20px;
+      }
+
+      .cake img {
+        width: 180px;
+        border-radius: 12px;
+        box-shadow: 0 0 12px rgba(255, 182, 193, 0.6);
+      }
+
+      /* Khung hộp quà pastel */
+      .gift-box {
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(135deg, #ffe6e6, #ffd9b3, #ffffff);
+        border: 4px solid #ffb6b6;
+        border-radius: 12px;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 12px rgba(255, 182, 193, 0.6),
+          0 0 20px rgba(255, 200, 150, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 4em;
+      }
+
+      .gift-box:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 18px rgba(255, 182, 193, 0.8),
+          0 0 28px rgba(255, 200, 150, 0.8);
+        filter: brightness(1.1);
+      }
+
+      .gift-box span {
+        pointer-events: none;
+      }
+
+      .fly-image {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        opacity: 0;
+        transition: transform 2s ease-out, opacity 1s ease-in;
+      }
+
+      .fly {
+        transform: translateX(-50%) translateY(-400px) scale(1.2);
+        opacity: 1;
+      }
+
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 6px #ffffff, 0 0 12px #ffffff, 0 0 18px #ff69b4,
+            0 0 26px #ff69b4, 0 0 34px #ff69b4;
+        }
+        100% {
+          text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 32px #ff1493,
+            0 0 44px #ff1493, 0 0 56px #ff1493;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content" id="content">
+        <h1>Chúc mừng sinh nhật!</h1>
+        <!-- Thay emoji bằng hình ảnh với alt="snvv nghen" -->
+        <div class="cake">
+          <img src="snvv.png" alt="snvv nghen" />
+        </div>
+      </div>
+
+      <!-- Khung hộp quà pastel với emoji bên trong -->
+      <div class="row">
+        <div class="gift-box" id="giftBox"><span>⁉️</span></div>
+      </div>
+
+      <!-- Ảnh bay lên -->
+      <img
+        src="https://i.imgur.com/3ZQ3Z5L.png"
+        alt="Quà bay lên"
+        class="fly-image"
+        id="flyImage"
+      />
+    </div>
+
+    <script>
+      const giftBox = document.getElementById("giftBox");
+      const content = document.getElementById("content");
+      const flyImage = document.getElementById("flyImage");
+
+      giftBox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        content.classList.add("hidden");
+        flyImage.classList.add("fly");
+      });
+
+      document.body.addEventListener("click", function () {
+        content.classList.remove("hidden");
+        flyImage.classList.remove("fly");
+      });
+    </script>
+  </body>
+</html>
